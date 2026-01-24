@@ -24,5 +24,5 @@ Root account
 - Created an IAM user and added it to the group
 - Logged in as the IAM user using the account-specific login URL
 - Verified denied access to EC2 and account/billing information  
-  - [EC2 access denied due to missing permissions](screenshots/ec2-access-denied.png)
+  - [EC2 access denied due to missing permissions](ec2-access-denied.png)
 
