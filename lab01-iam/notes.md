@@ -12,7 +12,7 @@ Root account
 
 ## Configuration
 - IAM group with `AmazonS3ReadOnlyAccess` policy  
-  - [IAM group and attached policy](lab01-iam/iam-group-policy.png)
+  - [IAM group and attached policy](iam-group-policy.png)
 - IAM user with console access
 - Permissions assigned via group only
 - No direct user policies
