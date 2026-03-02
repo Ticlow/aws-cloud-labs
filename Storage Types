@@ -1,0 +1,50 @@
+# Cloud Storage Mental Model (AWS-Focused)
+
+## The 3 Storage Types
+
+Cloud storage is not about services.
+It is about **access patterns**.
+
+Always ask:
+1. Does the app expect a disk?
+2. Do multiple machines need the same folder?
+3. Is this accessed via API/HTTP?
+
+---
+
+## 1️⃣ Block Storage (EBS)
+
+Think: Hard drive attached to ONE server.
+
+Used when:
+- Operating system disk
+- Databases
+- Single EC2 writes locally
+- Low-latency required
+
+Characteristics:
+- Attached to one EC2 (normally)
+- High IOPS possible
+- Acts like `/dev/xvda`
+- File system created on top of it
+
+If the app expects a normal disk → Block storage.
+
+---
+
+## 2️⃣ File Storage (EFS / FSx)
+
+Think: Shared network drive.
+
+Used when:
+- Multiple EC2 instances need the same directory
+- Legacy applications
+- POSIX file system behavior required
+- File locking needed
+
+Characteristics:
+- Mounted over network (NFS/SMB)
+- Multiple EC2s can access simultaneously
+- Looks like a normal folder
+
+If
