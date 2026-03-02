@@ -47,4 +47,82 @@ Characteristics:
 - Multiple EC2s can access simultaneously
 - Looks like a normal folder
 
-If
+If multiple machines need the same live folder → File storage.
+
+---
+
+## 3️⃣ Object Storage (S3)
+
+Think: Internet-scale object database.
+
+Used when:
+- Storing files via API
+- Backups
+- Static assets
+- Logs
+- Data lakes
+- AI datasets
+- Large-scale file storage
+
+Characteristics:
+- Accessed via HTTP / SDK / API
+- Not a traditional file system
+- Extremely scalable
+- Highly durable (11 9's durability)
+- Designed for distributed systems
+
+If accessed via API/HTTP and doesn’t require a mounted disk → Object storage.
+
+---
+
+## Quick Comparison
+
+| Storage Type | Best For | Shared? | Mounted as Disk? |
+|--------------|----------|---------|------------------|
+| Block (EBS)  | OS, DB   | No      | Yes              |
+| File (EFS)   | Shared folder | Yes | Yes         |
+| Object (S3)  | Files via API | Yes (via API) | No |
+
+---
+
+## Decision Framework
+
+Ask:
+
+- Single machine + disk semantics → Block
+- Multiple machines + shared folder → File
+- API-based file storage at scale → Object
+
+---
+
+## Important Concept
+
+Object storage exists because cloud systems are distributed.
+
+Modern apps:
+- Are stateless
+- Communicate via APIs
+- Store data externally
+
+Object storage fits that model.
+
+Block and file storage come from traditional server architecture.
+
+---
+
+## Security Angle
+
+Block:
+- Controlled by EC2 + IAM + OS permissions
+
+File:
+- Controlled by IAM + VPC + security groups
+
+Object:
+- Controlled primarily via IAM + bucket policies
+
+---
+
+End goal:
+Recognize the workload pattern.
+Do not memorize product names.
